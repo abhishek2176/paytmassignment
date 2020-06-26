@@ -1,5 +1,5 @@
 1. Select e.EmpName, Top 1 salary from 
-( Select Distict Top n salary from employee e Inner Join
+( Select Distinct Top n salary from employee e Inner Join
   Salary s on e.EmpID = s.EmpID 
   order by Salary desc
 ) Order by Salary 
