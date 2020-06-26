@@ -1,0 +1,38 @@
+1. Select e.EmpName, Top 1 salary from 
+( Select Distict Top n salary from employee e Inner Join
+  Salary s on e.EmpID = s.EmpID 
+  order by Salary desc
+) Order by Salary 
+
+2. Update Salary
+   Set Salary = Salary + 5000
+   from Employee e Inner Join Salary s
+   on e.EmpID = s.EmpID 
+   WHERE DATEDIFF(YEAR, DOB, GETDATE())>30
+      
+	  
+
+Assumptions
+
+There are many promo codes in the system, but we’re testing for NEW30.
+User’s data is being persisted in the database and there is an api that tells if the user is an existing user or a new one.
+
+
+Scenarios
+
+1. Check the length of the promo code entered by the user, if length > 7, a client side validation saying “Promo code must not be more than 7 characters” should be displayed.
+2. Case sensitivity of the applied promo code should not matter i.e.
+   New30, new30, NEW30, nEw30 and so on.. should be allowed.
+3. Check if the user trying to apply the promo code is a new user -
+ 1. If it is an existing user then the system should throw an appropriate validation message.
+ 2. If it is a new user
+    1. System should throw a validation if amount < 1000. Check for 999 and 999.99
+    2. If amount > 1000, system should apply the discount on the principal value.
+      1. Check the discount applied, should not be more than 300. Check with amount 1000, 5000, 10000.
+      2. Check that the discount is applied on the amount and not on the GST.
+4. Try applying the code again for the same user as in pt. #3, the system should not let the user apply that promo code since it is now an existing user.
+
+	  
+	  
+	  
+	
