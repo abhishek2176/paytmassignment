@@ -1,2 +1,0 @@
-# paytmassignment
-Paytm Insider assignment
